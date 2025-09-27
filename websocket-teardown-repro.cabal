@@ -35,6 +35,11 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , http-types
+    , wai
+    , wai-websockets
+    , warp
+    , websockets
   default-language: Haskell2010
 
 executable websocket-teardown-repro-exe
@@ -48,7 +53,12 @@ executable websocket-teardown-repro-exe
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , http-types
+    , wai
+    , wai-websockets
+    , warp
     , websocket-teardown-repro
+    , websockets
   default-language: Haskell2010
 
 test-suite websocket-teardown-repro-test
@@ -63,5 +73,10 @@ test-suite websocket-teardown-repro-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , http-types
+    , wai
+    , wai-websockets
+    , warp
     , websocket-teardown-repro
+    , websockets
   default-language: Haskell2010
