@@ -37,6 +37,7 @@ library
       base >=4.7 && <5
     , http-types
     , signal
+    , text
     , wai
     , wai-websockets
     , warp
@@ -56,6 +57,7 @@ executable websocket-teardown-repro-exe
       base >=4.7 && <5
     , http-types
     , signal
+    , text
     , wai
     , wai-websockets
     , warp
@@ -77,6 +79,7 @@ test-suite websocket-teardown-repro-test
       base >=4.7 && <5
     , http-types
     , signal
+    , text
     , wai
     , wai-websockets
     , warp

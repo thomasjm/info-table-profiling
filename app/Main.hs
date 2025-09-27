@@ -5,6 +5,9 @@ module Main (main) where
 import Control.Exception
 import Control.Monad
 import Data.Function
+import Data.Text (Text)
+import qualified Data.Text as T
+import qualified Data.Text.IO as T
 import Network.HTTP.Types.Status
 import Network.Wai
 import Network.Wai.Handler.Warp as W
@@ -20,7 +23,7 @@ wsApp pending = do
 
     flip finally disconnect $ forever $ do
         msg <- receiveData conn
-        putStrLn $ "Received: " ++ show (msg :: String)
+        T.putStrLn $ "Received: " <> T.pack (show (msg :: Text))
         sendTextData conn msg
   where
     disconnect = putStrLn "WebSocket connection closed"
@@ -31,7 +34,7 @@ application req respond
     | otherwise = backupApp req respond
   where
     backupApp :: Application
-    backupApp _ respond = respond $ responseLBS status404 [] "Not found"
+    backupApp _ responseFunc = responseFunc $ responseLBS status404 [] "Not found"
 
 main :: IO ()
 main = do

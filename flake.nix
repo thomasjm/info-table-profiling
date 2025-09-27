@@ -12,6 +12,7 @@
           buildInputs = with pkgs; [
             zlib
             haskell.compiler.ghc9122
+            websocat
           ];
         };
       });
