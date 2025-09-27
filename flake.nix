@@ -11,6 +11,7 @@
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             zlib
+            haskell.compiler.ghc9122
           ];
         };
       });

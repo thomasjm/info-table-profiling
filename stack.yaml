@@ -1,6 +1,10 @@
 
-snapshot:
-  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/24/12.yaml
+resolver: nightly-2025-09-26
+
+nix:
+  enable: false
+
+system-ghc: true
 
 packages:
 - .

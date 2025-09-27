@@ -36,6 +36,7 @@ library
   build-depends:
       base >=4.7 && <5
     , http-types
+    , signal
     , wai
     , wai-websockets
     , warp
@@ -54,6 +55,7 @@ executable websocket-teardown-repro-exe
   build-depends:
       base >=4.7 && <5
     , http-types
+    , signal
     , wai
     , wai-websockets
     , warp
@@ -74,6 +76,7 @@ test-suite websocket-teardown-repro-test
   build-depends:
       base >=4.7 && <5
     , http-types
+    , signal
     , wai
     , wai-websockets
     , warp

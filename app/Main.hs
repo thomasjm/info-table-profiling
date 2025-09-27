@@ -1,18 +1,23 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Main (main) where
 
+import Control.Exception
+import Control.Monad
+import Data.Function
+import Network.HTTP.Types.Status
 import Network.Wai
-import Network.Wai.Handler.Warp
+import Network.Wai.Handler.Warp as W
 import Network.Wai.Handler.WebSockets
 import Network.WebSockets
-import Network.HTTP.Types.Status
-import Control.Exception (finally)
-import Control.Monad (forever)
+import System.Signal
+
 
 wsApp :: ServerApp
 wsApp pending = do
     conn <- acceptRequest pending
     putStrLn "WebSocket connection established"
-    
+
     flip finally disconnect $ forever $ do
         msg <- receiveData conn
         putStrLn $ "Received: " ++ show (msg :: String)
@@ -32,4 +37,13 @@ main :: IO ()
 main = do
     putStrLn "Starting WebSocket echo server on port 8080"
     putStrLn "WebSocket endpoint available at: ws://localhost:8080/socket"
-    run 8080 application
+
+    let settings = defaultSettings
+                 & W.setInstallShutdownHandler (\closeSocket -> void $ do
+                                                   void $ installHandler sigTERM (\_ -> putStrLn "Shutting down due to SIGTERM..." >> closeSocket)
+                                                   void $ installHandler sigINT (\_ -> putStrLn "Shutting down due to SIGINT..." >> closeSocket)
+                                               )
+                 & setGracefulShutdownTimeout (Just 1)
+                 & setPort 8080
+
+    runSettings settings application
