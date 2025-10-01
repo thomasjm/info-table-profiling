@@ -44,9 +44,19 @@ library:
   source-dirs: src
 
 executables:
-  websocket-teardown-repro-exe:
+  websocket-repro-wai:
     main:                Main.hs
-    source-dirs:         app
+    source-dirs:         app-wai
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - websocket-teardown-repro
+
+  websocket-repro:
+    main:                Main.hs
+    source-dirs:         app-websockets
     ghc-options:
     - -threaded
     - -rtsopts

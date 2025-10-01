@@ -2,6 +2,7 @@
 
 module Main (main) where
 
+import Control.Concurrent
 import Control.Exception
 import Control.Monad
 import Data.Function
@@ -43,7 +44,7 @@ main = do
 
     let settings = defaultSettings
                  & W.setInstallShutdownHandler (\closeSocket -> void $ do
-                                                   void $ installHandler sigTERM (\_ -> putStrLn "Shutting down due to SIGTERM..." >> closeSocket)
+                                                   void $ installHandler sigTERM (\_ -> putStrLn "Shutting down due to SIGTERM..." >> closeSocket >> threadDelay 1000000 >> closeSocket)
                                                    void $ installHandler sigINT (\_ -> putStrLn "Shutting down due to SIGINT..." >> closeSocket)
                                                )
                  & setGracefulShutdownTimeout (Just 1)

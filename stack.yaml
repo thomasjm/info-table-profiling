@@ -8,3 +8,7 @@ system-ghc: true
 
 packages:
 - .
+# - C:\Users\tom\tools\wai\wai
+# - C:\Users\tom\tools\wai\wai-websockets
+# - C:\Users\tom\tools\wai\warp
+# - C:\Users\tom\tools\websockets
