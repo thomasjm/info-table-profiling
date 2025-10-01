@@ -8,7 +8,6 @@ import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import Network.WebSockets
-import System.Signal
 
 
 wsApp :: ServerApp
@@ -25,8 +24,5 @@ main :: IO ()
 main = do
   putStrLn "Starting WebSocket only echo server on port 8080"
   putStrLn "WebSocket endpoint available at: ws://localhost:8080/socket"
-
-  void $ installHandler sigTERM (\_ -> putStrLn "Process received SIGTERM...")
-  void $ installHandler sigINT (\_ -> putStrLn "Process received SIGINT...")
 
   runServer "127.0.0.1" 8080 wsApp
