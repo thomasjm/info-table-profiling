@@ -31,8 +31,10 @@ library:
   ghc-options:
   - -finfo-table-map
   - -fdistinct-constructor-tables
-  - -g3
-  - -O0
+  - -g
+  - -O2
+  - -prof
+  - -fprof-auto
 
 executables:
   app:
@@ -44,7 +46,9 @@ executables:
     - -with-rtsopts=-N
     - -finfo-table-map
     - -fdistinct-constructor-tables
-    - -g3
-    - -O0
+    - -g
+    - -O2
+    - -prof
+    - -fprof-auto
     dependencies:
     - hi-profile-test
