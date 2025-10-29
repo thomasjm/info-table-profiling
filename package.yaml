@@ -28,6 +28,11 @@ ghc-options:
 
 library:
   source-dirs: src
+  ghc-options:
+  - -finfo-table-map
+  - -fdistinct-constructor-tables
+  - -g3
+  - -O0
 
 executables:
   app:
@@ -37,5 +42,9 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
+    - -finfo-table-map
+    - -fdistinct-constructor-tables
+    - -g3
+    - -O0
     dependencies:
-    - websocket-teardown-repro
+    - hi-profile-test
