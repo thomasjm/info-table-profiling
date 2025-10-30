@@ -33,14 +33,14 @@ main = do
     let tree = buildTree 15
     let result = sumTree tree
     putStrLn $ "Tree sum: " ++ show result
-    threadDelay 500000
+    threadDelay 2000000
 
   putStrLn "Phase 2: Allocating large lists"
   forM_ [10000, 50000, 100000, 200000] $ \size -> do
     let bigList = allocateLists size
     let result = foldl' (+) 0 bigList
     putStrLn $ "List size " ++ show size ++ ", sum: " ++ show result
-    threadDelay 500000
+    threadDelay 2000000
 
   putStrLn "Phase 3: Multiple concurrent allocations"
   let lists = map allocateLists [10000, 20000, 30000, 40000, 50000]
@@ -52,6 +52,6 @@ main = do
     let strings = map (\i -> "String number " ++ show i ++ " with extra padding") [1..10000]
     let totalLength = sum (map length strings)
     putStrLn $ "Total string length: " ++ show totalLength
-    threadDelay 1000000
+    threadDelay 2000000
 
   putStrLn "Heap profiling demo completed!"

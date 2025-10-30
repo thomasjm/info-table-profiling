@@ -25,7 +25,7 @@ library
       Paths_hi_profile_test
   hs-source-dirs:
       src
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -finfo-table-map -fdistinct-constructor-tables -g -O2 -prof -fprof-auto
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -finfo-table-map -fdistinct-constructor-tables -g -O0
   build-depends:
       base >=4.7 && <5
     , http-types
@@ -33,7 +33,7 @@ library
     , text
   default-language: Haskell2010
 
-executable app
+executable hi-profile-test
   main-is: Main.hs
   other-modules:
       Paths_hi_profile_test
@@ -41,7 +41,7 @@ executable app
       Paths_hi_profile_test
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N -finfo-table-map -fdistinct-constructor-tables -g -O2 -prof -fprof-auto
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -eventlog -with-rtsopts=-N -finfo-table-map -fdistinct-constructor-tables -g -O0
   build-depends:
       base >=4.7 && <5
     , hi-profile-test

@@ -32,23 +32,20 @@ library:
   - -finfo-table-map
   - -fdistinct-constructor-tables
   - -g
-  - -O2
-  - -prof
-  - -fprof-auto
+  - -O0
 
 executables:
-  app:
+  hi-profile-test:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
     - -threaded
     - -rtsopts
+    - -eventlog
     - -with-rtsopts=-N
     - -finfo-table-map
     - -fdistinct-constructor-tables
     - -g
-    - -O2
-    - -prof
-    - -fprof-auto
+    - -O0
     dependencies:
     - hi-profile-test

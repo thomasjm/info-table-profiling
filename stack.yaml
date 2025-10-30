@@ -1,5 +1,10 @@
 
-resolver: nightly-2025-09-26
+resolver: nightly-2025-10-29
+
+ghc-options:
+  "$everything": >-
+    -finfo-table-map
+    -fdistinct-constructor-tables
 
 nix:
   enable: false
@@ -8,7 +13,3 @@ system-ghc: true
 
 packages:
 - .
-# - C:\Users\tom\tools\wai\wai
-# - C:\Users\tom\tools\wai\wai-websockets
-# - C:\Users\tom\tools\wai\warp
-# - C:\Users\tom\tools\websockets
